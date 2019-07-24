@@ -1,0 +1,25 @@
+---
+title: "Summary report"
+output: html_document
+params:
+  n: NA
+  y1: NA
+  y2: NA
+---
+
+# Aggregation made for the period `r params$y1` - `r params$y2`
+
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+params$n
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(plotly)
+
+df <- as.data.frame(params$n)
+
+plot_ly(df, x = ~Value, color = ~G, type = "box", showlegend=FALSE) %>%
+  layout(autosize = F, width = '300%', height = '200%')
+```
+
+
